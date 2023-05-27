@@ -14,32 +14,25 @@ extern String chosen_word;
 extern int hangman_state;
 String current_letter;
 extern String guessed[20];
-extern int j;
+int wrong_index = 0;
 
-/*String get_guess() {
-  String guess;
-   cout << "Guess a letter! ";
-    cin >> guess;
-  return guess;
-}*/
 
 void hangman_round(String guess) {
   int len = chosen_word.length();
   num_wrong = 0;
-   //String guess = get_guess();
-   //String guessed[len];
-   for(j = 0; j < len; j++) {
+   for(int j = 0; j < len; j++) {
        current_letter = chosen_word[j];
        if (guess == current_letter) { //chosen_word[j]
            guessed[j] = guess;
        }
        else {
            num_wrong++;
+           
+       }
+       if (num_wrong >= len) {
+        wrong_list[wrong_index] = guess;
+        hangman_state++;
+        wrong_index++;
        }
    }
-   if (num_wrong >= len) {
-        wrong_list[j] = guess;
-        hangman_state++;
-   }
-   //return hangman_state;
 }
