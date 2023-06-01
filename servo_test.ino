@@ -109,27 +109,23 @@ void loop() {
     backLeft.write(pos);
     frontRight.write(pos);
     backRight.write(pos);
-    if (pos < 90) {
-      tail.write(pos);
-      if (pos < 45) {
-      jaw.write(pos);
-      }
-    }
-    delay(5);                       // waits 15 ms for the servo to reach the position
   }
+  for (pos = 0; pos <= 90; pos += 1) {
+    tail.write(pos);
+    jaw.write(pos);
+  }
+    delay(5);                       // waits 15 ms for the servo to reach the position
   for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
     frontLeft.write(pos);  // tell servo to go to position in variable 'pos'
     backLeft.write(pos);
     frontRight.write(pos);
     backRight.write(pos);
-    if (pos > 90) {
-      tail.write(pos);
-      if (pos < 45) {
-        jaw.write(pos);
-      }
-    }
-    delay(5);                       // waits 15 ms for the servo to reach the position
   }
+  for (pos = 90; pos >= 0; pos -= 1) {
+    tail.write(pos);
+    jaw.write(pos);
+  }
+    delay(5);                       // waits 15 ms for the servo to reach the position
   play_hangman();
   Serial.print("\n Letters you've guessed wrong: ");
   for (int p = 0; p < 7; p++) {
