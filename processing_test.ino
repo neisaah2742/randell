@@ -1,4 +1,4 @@
-int button = 2;
+/*int button = 2;
 byte arbitraryCode = 97;
 
 void setup() {
@@ -9,4 +9,4 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
     Serial.write(arbitraryCode);
-}
+}*/

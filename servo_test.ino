@@ -4,6 +4,8 @@ Servo frontLeft;  // create servo object to control a servo
 Servo backLeft;
 Servo frontRight;
 Servo backRight;
+Servo jaw;
+Servo tail;
 int pos = 0;    // variable to store the servo position
 
 
@@ -91,6 +93,8 @@ void setup() {
   backLeft.attach(5);
   frontRight.attach(6);
   backRight.attach(9);
+  tail.attach(10);
+  jaw.attach(11);
   Serial.begin(9600);
   rand_int = rand_index();
   game_start(rand_int);
@@ -105,6 +109,12 @@ void loop() {
     backLeft.write(pos);
     frontRight.write(pos);
     backRight.write(pos);
+    if (pos < 90) {
+      tail.write(pos);
+      if (pos < 45) {
+      jaw.write(pos);
+      }
+    }
     delay(5);                       // waits 15 ms for the servo to reach the position
   }
   for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
@@ -112,6 +122,12 @@ void loop() {
     backLeft.write(pos);
     frontRight.write(pos);
     backRight.write(pos);
+    if (pos > 90) {
+      tail.write(pos);
+      if (pos < 45) {
+        jaw.write(pos);
+      }
+    }
     delay(5);                       // waits 15 ms for the servo to reach the position
   }
   play_hangman();
